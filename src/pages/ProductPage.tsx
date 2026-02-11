@@ -62,6 +62,10 @@ const ProductPage = () => {
               <ProductBenefits benefits={product.benefits} />
             </div>
 
+            {product.wistiaMediaId && (
+              <WistiaVideo mediaId={product.wistiaMediaId} aspect={product.wistiaAspect || "0.5625"} />
+            )}
+
             <div className="text-sm leading-relaxed text-foreground whitespace-pre-line">
               {product.description}
             </div>

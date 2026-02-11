@@ -65,10 +65,10 @@ const InstallPrompt = ({ forceOpen, onClose }: InstallPromptProps) => {
               </div>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">
-              Guarde este acesso como App no seu telemovel
+              Coloque este site como App no seu telemovel
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Assim voce entra mais rapido e recebe todas as novidades primeiro.
+              Assim voce entra com 1 toque e nao perde novos materiais.
             </p>
           </div>
 

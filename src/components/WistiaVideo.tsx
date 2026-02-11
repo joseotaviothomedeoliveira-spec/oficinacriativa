@@ -1,61 +1,30 @@
-import { useEffect } from "react";
-
-let wistiaPlayerLoaded = false;
-
 interface WistiaVideoProps {
   mediaId: string;
   aspect: string;
 }
 
 const WistiaVideo = ({ mediaId, aspect }: WistiaVideoProps) => {
-  useEffect(() => {
-    // Load player.js once globally
-    if (!wistiaPlayerLoaded) {
-      const script = document.createElement("script");
-      script.src = "https://fast.wistia.com/player.js";
-      script.async = true;
-      document.head.appendChild(script);
-      wistiaPlayerLoaded = true;
-    }
-
-    // Load per-media embed script
-    const embedId = `wistia-embed-${mediaId}`;
-    if (!document.getElementById(embedId)) {
-      const script = document.createElement("script");
-      script.id = embedId;
-      script.src = `https://fast.wistia.com/embed/${mediaId}.js`;
-      script.async = true;
-      script.type = "module";
-      document.head.appendChild(script);
-    }
-  }, [mediaId]);
-
-  const paddingTop = aspect ? `${(1 / parseFloat(aspect)) * 100}%` : "56.25%";
+  const aspectNum = parseFloat(aspect) || 0.5625;
+  const paddingTop = `${(1 / aspectNum) * 100}%`;
 
   return (
-    <div className="w-full overflow-hidden rounded-lg">
-      <style>{`
-        wistia-player[media-id='${mediaId}']:not(:defined) {
-          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${mediaId}/swatch');
-          display: block;
-          filter: blur(5px);
-          padding-top: ${paddingTop};
-        }
-      `}</style>
-      <wistia-player media-id={mediaId} aspect={aspect} />
+    <div className="w-full overflow-hidden rounded-lg" style={{ position: "relative", paddingTop, height: 0 }}>
+      <iframe
+        src={`https://fast.wistia.net/embed/iframe/${mediaId}?seo=true&videoFoam=true`}
+        title="Video"
+        allow="autoplay; fullscreen"
+        allowFullScreen
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+      />
     </div>
   );
 };
 
 export default WistiaVideo;
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "wistia-player": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & { "media-id": string; aspect?: string },
-        HTMLElement
-      >;
-    }
-  }
-}

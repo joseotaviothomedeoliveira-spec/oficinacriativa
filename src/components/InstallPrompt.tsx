@@ -65,10 +65,10 @@ const InstallPrompt = ({ forceOpen, onClose }: InstallPromptProps) => {
               </div>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">
-              Guarde este acesso como App no seu telemovel
+              Coloque este site como App no seu telemovel
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Assim voce entra mais rapido e recebe todas as novidades primeiro.
+              Assim voce entra com 1 toque e nao perde novos materiais.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ const InstallPrompt = ({ forceOpen, onClose }: InstallPromptProps) => {
               onClick={dismissForever}
               className="w-full rounded-xl bg-primary py-3.5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Ja adicionei
+              Adicionar agora
             </button>
             <button
               onClick={close}
@@ -130,17 +130,17 @@ const IOSSteps = () => (
     </p>
     <div className="space-y-4">
       <StepRow number={1} icon={<Share className="h-4 w-4 text-primary" />}>
-        Toque no botao de <strong>Partilha</strong> (quadrado com seta para cima).
+        Toque no botao de <strong>Partilha</strong> (quadrado com seta para cima, em baixo no ecra).
       </StepRow>
       <StepRow number={2}>
-        Desca ate encontrar <strong>"Adicionar ao Ecra Principal"</strong>.
+        Desca e toque em <strong>"Adicionar ao Ecra Principal"</strong>.
       </StepRow>
       <StepRow number={3}>
-        Toque em <strong>"Adicionar"</strong>.
+        Toque em <strong>"Adicionar"</strong> no canto superior.
       </StepRow>
     </div>
     <p className="text-sm text-muted-foreground pt-1">
-      Pronto. Vai aparecer como aplicativo no seu ecra.
+      Vai aparecer como aplicativo no seu telemovel.
     </p>
   </div>
 );
@@ -153,17 +153,17 @@ const AndroidSteps = () => (
     </p>
     <div className="space-y-4">
       <StepRow number={1} icon={<MoreVertical className="h-4 w-4 text-primary" />}>
-        Toque nos <strong>3 pontinhos</strong> no canto superior.
+        Toque nos <strong>3 pontinhos</strong> no canto superior direito.
       </StepRow>
       <StepRow number={2}>
-        Toque em <strong>"Adicionar a Tela Inicial"</strong> ou <strong>"Instalar App"</strong>.
+        Toque em <strong>"Adicionar a tela inicial"</strong> ou <strong>"Instalar app"</strong>.
       </StepRow>
       <StepRow number={3}>
         Confirme em <strong>"Instalar"</strong>.
       </StepRow>
     </div>
     <p className="text-sm text-muted-foreground pt-1">
-      Pronto. Vai aparecer como aplicativo no seu telemovel.
+      Vai aparecer como aplicativo no seu telemovel.
     </p>
   </div>
 );

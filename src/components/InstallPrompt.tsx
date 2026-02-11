@@ -153,10 +153,10 @@ const AndroidSteps = () => (
     </p>
     <div className="space-y-4">
       <StepRow number={1} icon={<MoreVertical className="h-4 w-4 text-primary" />}>
-        Toque nos <strong>3 pontinhos</strong> no canto superior.
+        Toque nos <strong>3 pontinhos</strong> no canto superior direito.
       </StepRow>
       <StepRow number={2}>
-        Toque em <strong>"Adicionar a Tela Inicial"</strong> ou <strong>"Instalar App"</strong>.
+        Toque em <strong>"Adicionar a tela inicial"</strong> ou <strong>"Instalar app"</strong>.
       </StepRow>
       <StepRow number={3}>
         Confirme em <strong>"Instalar"</strong>.

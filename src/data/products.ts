@@ -30,6 +30,8 @@ export interface Product {
   benefits: string[];
   faqs: FAQ[];
   hotmartCheckoutUrl: string;
+  wistiaMediaId?: string;
+  wistiaAspect?: string;
 }
 
 export const products: Product[] = [

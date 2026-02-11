@@ -140,7 +140,7 @@ const IOSSteps = () => (
       </StepRow>
     </div>
     <p className="text-sm text-muted-foreground pt-1">
-      Pronto. Vai aparecer como aplicativo no seu ecra.
+      Vai aparecer como aplicativo no seu telemovel.
     </p>
   </div>
 );

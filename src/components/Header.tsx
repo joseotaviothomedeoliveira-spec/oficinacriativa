@@ -7,10 +7,10 @@ const Header = () => {
         {/* Logo: troque por <img src="/logo.png" /> quando tiver o arquivo */}
         <Link to="/" className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">V+</span>
+            <span className="text-lg font-bold text-primary-foreground">OC</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold leading-tight text-foreground">Vetrina+</h1>
+            <h1 className="text-lg font-semibold leading-tight tracking-tight text-foreground" style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}>Oficina Criativa</h1>
             <p className="text-xs text-muted-foreground">Acesse seus materiais e ofertas</p>
           </div>
         </Link>

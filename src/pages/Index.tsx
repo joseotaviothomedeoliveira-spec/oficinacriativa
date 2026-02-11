@@ -8,10 +8,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Vetrina+ — Materiais e ofertas digitais</title>
+        <title>Oficina Criativa — Materiais e ofertas digitais</title>
         <meta
           name="description"
-          content="Acesse seus materiais e ofertas digitais na Vetrina+. Produtos digitais com acesso imediato."
+          content="Acesse seus materiais e ofertas digitais na Oficina Criativa. Produtos digitais com acesso imediato."
         />
       </Helmet>
 

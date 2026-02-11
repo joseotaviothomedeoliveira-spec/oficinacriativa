@@ -130,13 +130,13 @@ const IOSSteps = () => (
     </p>
     <div className="space-y-4">
       <StepRow number={1} icon={<Share className="h-4 w-4 text-primary" />}>
-        Toque no botao de <strong>Partilha</strong> (quadrado com seta para cima).
+        Toque no botao de <strong>Partilha</strong> (quadrado com seta para cima, em baixo no ecra).
       </StepRow>
       <StepRow number={2}>
-        Desca ate encontrar <strong>"Adicionar ao Ecra Principal"</strong>.
+        Desca e toque em <strong>"Adicionar ao Ecra Principal"</strong>.
       </StepRow>
       <StepRow number={3}>
-        Toque em <strong>"Adicionar"</strong>.
+        Toque em <strong>"Adicionar"</strong> no canto superior.
       </StepRow>
     </div>
     <p className="text-sm text-muted-foreground pt-1">

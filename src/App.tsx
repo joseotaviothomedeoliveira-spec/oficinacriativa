@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import InstallPrompt from "@/components/InstallPrompt";
 import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
               </Routes>
             </div>
             <Footer />
+            <InstallPrompt />
           </div>
         </BrowserRouter>
       </TooltipProvider>

@@ -163,7 +163,7 @@ const AndroidSteps = () => (
       </StepRow>
     </div>
     <p className="text-sm text-muted-foreground pt-1">
-      Pronto. Vai aparecer como aplicativo no seu telemovel.
+      Vai aparecer como aplicativo no seu telemovel.
     </p>
   </div>
 );

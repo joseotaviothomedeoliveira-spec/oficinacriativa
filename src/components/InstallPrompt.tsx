@@ -86,7 +86,7 @@ const InstallPrompt = ({ forceOpen, onClose }: InstallPromptProps) => {
               onClick={dismissForever}
               className="w-full rounded-xl bg-primary py-3.5 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Ja adicionei
+              Adicionar agora
             </button>
             <button
               onClick={close}

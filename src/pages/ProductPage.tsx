@@ -25,7 +25,7 @@ const ProductPage = () => {
   return (
     <>
       <Helmet>
-        <title>{product.name} — Vetrina+</title>
+        <title>{product.name} — Oficina Criativa</title>
         <meta name="description" content={product.shortDescription} />
       </Helmet>
 

@@ -12,6 +12,7 @@ import imgKitAlfabetizacao from "@/assets/product-kit-alfabetizacao.png";
 import imgSalaAula from "@/assets/product-sala-aula.png";
 import imgMoldesNovos from "@/assets/product-moldes-novos.png";
 import imgPainelPalavras from "@/assets/product-painel-palavras.png";
+import imgPalavrasEscondidas from "@/assets/product-palavras-escondidas.png";
 
 export interface FAQ {
   q: string;
@@ -30,6 +31,8 @@ export interface Product {
   benefits: string[];
   faqs: FAQ[];
   hotmartCheckoutUrl: string;
+  wistiaMediaId?: string;
+  wistiaAspect?: string;
 }
 
 export const products: Product[] = [
@@ -37,7 +40,9 @@ export const products: Product[] = [
     id: "1",
     slug: "5000-atividades",
     name: "+5000 Atividades",
-    priceText: "€37,00",
+    priceText: "€10,00",
+    wistiaMediaId: "kfrilcm89f",
+    wistiaAspect: "0.75",
     shortDescription:
       "Mais de 5.000 atividades prontas a imprimir para todas as situações educativas.",
     description:
@@ -167,6 +172,33 @@ export const products: Product[] = [
       { q: "Tem garantia?", a: "Sim, 7 dias de garantia incondicional." },
     ],
     hotmartCheckoutUrl: "https://pay.hotmart.com/O102313182J?checkoutMode=2",
+  },
+  {
+    id: "6",
+    slug: "palavras-escondidas",
+    name: "Palavras Escondidas",
+    priceText: "€5,00",
+    shortDescription:
+      "Atividade divertida para as crianças descobrirem palavras dentro de letras e sílabas.",
+    description:
+      "A atividade Palavras Escondidas foi criada para tornar a aprendizagem da leitura muito mais divertida.\n\nAs crianças vão adorar procurar e descobrir palavras dentro das letras e sílabas, desenvolvendo atenção, concentração e reconhecimento visual.\n\nIdeal para trabalhar vocabulário, leitura e coordenação motora. Perfeita para imprimir e usar em sala de aula ou em casa.",
+    coverImageUrl: imgPalavrasEscondidas,
+    galleryImageUrls: [imgPalavrasEscondidas],
+    benefits: [
+      "Estimula a leitura de forma lúdica",
+      "Ajuda na memorização das palavras",
+      "Promove raciocínio e concentração",
+      "Pronta para imprimir e usar imediatamente",
+    ],
+    faqs: [
+      { q: "Para que idade é indicado?", a: "Ideal para crianças em fase de alfabetização, dos 4 aos 7 anos." },
+      { q: "Como recebo?", a: "Acesso imediato por e-mail após a compra." },
+      { q: "Posso usar em sala de aula?", a: "Sim, é perfeito para uso em sala de aula ou em casa." },
+      { q: "Tem garantia?", a: "Sim, 7 dias de garantia incondicional." },
+    ],
+    hotmartCheckoutUrl: "https://pay.hotmart.com/J102380393P?checkoutMode=2",
+    wistiaMediaId: "hqc0ir1wq6",
+    wistiaAspect: "0.5625",
   },
 ];
 

@@ -6,6 +6,7 @@ import ProductGallery from "@/components/ProductGallery";
 import ProductBenefits from "@/components/ProductBenefits";
 import ProductFAQ from "@/components/ProductFAQ";
 import HotmartButton from "@/components/HotmartButton";
+import WistiaVideo from "@/components/WistiaVideo";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -60,6 +61,10 @@ const ProductPage = () => {
             <div className="rounded-lg border border-border bg-card p-5">
               <ProductBenefits benefits={product.benefits} />
             </div>
+
+            {product.wistiaMediaId && (
+              <WistiaVideo mediaId={product.wistiaMediaId} aspect={product.wistiaAspect || "0.5625"} />
+            )}
 
             <div className="text-sm leading-relaxed text-foreground whitespace-pre-line">
               {product.description}

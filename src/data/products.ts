@@ -12,6 +12,7 @@ import imgKitAlfabetizacao from "@/assets/product-kit-alfabetizacao.png";
 import imgSalaAula from "@/assets/product-sala-aula.png";
 import imgMoldesNovos from "@/assets/product-moldes-novos.png";
 import imgPainelPalavras from "@/assets/product-painel-palavras.png";
+import imgPalavrasEscondidas from "@/assets/product-palavras-escondidas.png";
 
 export interface FAQ {
   q: string;

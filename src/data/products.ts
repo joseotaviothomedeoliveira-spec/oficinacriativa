@@ -40,7 +40,9 @@ export const products: Product[] = [
     id: "1",
     slug: "5000-atividades",
     name: "+5000 Atividades",
-    priceText: "€37,00",
+    priceText: "€10,00",
+    wistiaMediaId: "kfrilcm89f",
+    wistiaAspect: "0.75",
     shortDescription:
       "Mais de 5.000 atividades prontas a imprimir para todas as situações educativas.",
     description:

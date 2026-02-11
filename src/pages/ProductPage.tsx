@@ -6,6 +6,7 @@ import ProductGallery from "@/components/ProductGallery";
 import ProductBenefits from "@/components/ProductBenefits";
 import ProductFAQ from "@/components/ProductFAQ";
 import HotmartButton from "@/components/HotmartButton";
+import WistiaVideo from "@/components/WistiaVideo";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();

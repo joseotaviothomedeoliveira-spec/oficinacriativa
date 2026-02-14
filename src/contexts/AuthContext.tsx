@@ -36,11 +36,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signInWithEmail = async (email: string) => {
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.origin },
-    });
-    return { error: error as Error | null };
+    try {
+      // Call edge function to get a token hash for instant login
+      const res = await supabase.functions.invoke("auto-login", {
+        body: { email },
+      });
+
+      if (res.error || !res.data?.token_hash) {
+        return { error: new Error(res.error?.message || "Login failed") };
+      }
+
+      // Use the token hash to verify OTP and create a session instantly
+      const { error } = await supabase.auth.verifyOtp({
+        type: "magiclink",
+        token_hash: res.data.token_hash,
+      });
+
+      return { error: error as Error | null };
+    } catch (err) {
+      return { error: err as Error };
+    }
   };
 
   const signOut = async () => {

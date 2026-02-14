@@ -1,1 +1,4 @@
 project_id = "sftnncffdhpfntocbfes"
+
+[functions.hotmart-webhook]
+verify_jwt = false

@@ -11,11 +11,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       to={`/p/${product.slug}`}
       className="group block overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-lg animate-fade-in"
     >
-      <div className="aspect-[16/10] overflow-hidden">
+      <div className="aspect-[16/10] overflow-hidden bg-muted/30">
         <img
           src={product.coverImageUrl}
           alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
       </div>

@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      deliverables: {
+        Row: {
+          created_at: string
+          file_url: string
+          id: string
+          label: string
+          product_slug: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          file_url: string
+          id?: string
+          label: string
+          product_slug: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          file_url?: string
+          id?: string
+          label?: string
+          product_slug?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          buyer_email: string
+          created_at: string
+          hotmart_transaction_id: string | null
+          id: string
+          product_name: string
+          product_slug: string
+          status: string
+        }
+        Insert: {
+          buyer_email: string
+          created_at?: string
+          hotmart_transaction_id?: string | null
+          id?: string
+          product_name: string
+          product_slug: string
+          status?: string
+        }
+        Update: {
+          buyer_email?: string
+          created_at?: string
+          hotmart_transaction_id?: string | null
+          id?: string
+          product_name?: string
+          product_slug?: string
+          status?: string
+        }
+        Relationships: []
+      }
       push_subscriptions: {
         Row: {
           auth: string

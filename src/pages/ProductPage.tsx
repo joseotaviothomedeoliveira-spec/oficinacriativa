@@ -7,6 +7,7 @@ import ProductBenefits from "@/components/ProductBenefits";
 import ProductFAQ from "@/components/ProductFAQ";
 import HotmartButton from "@/components/HotmartButton";
 import WistiaVideo from "@/components/WistiaVideo";
+import ProductDeliverables from "@/components/ProductDeliverables";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -55,6 +56,8 @@ const ProductPage = () => {
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-bold text-price">{product.priceText}</span>
             </div>
+
+            <ProductDeliverables productSlug={product.slug} />
 
             <HotmartButton checkoutUrl={product.hotmartCheckoutUrl} />
 

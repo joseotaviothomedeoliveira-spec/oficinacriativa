@@ -97,7 +97,7 @@ export const products: Product[] = [
     id: "3",
     slug: "kit-sala-de-aula-1-hora",
     name: "Kit Sala de Aula em 1 Hora",
-    priceText: "Consultar",
+    priceText: "€3,90",
     shortDescription:
       "Modelos prontos de mural, calendário e decoração para montar a sala rapidamente.",
     description:
@@ -124,7 +124,7 @@ export const products: Product[] = [
     id: "4",
     slug: "moldes-novos-todos-os-meses",
     name: "Moldes Novos Todos os Meses",
-    priceText: "Consultar",
+    priceText: "€3,90",
     shortDescription:
       "Receba novos moldes todos os meses para manter as atividades atualizadas.",
     description:
@@ -205,7 +205,7 @@ export const products: Product[] = [
     id: "7",
     slug: "5000-moldes-eva",
     name: "+5000 Moldes de EVA",
-    priceText: "Consultar",
+    priceText: "€10,00",
     shortDescription:
       "Mais de 5.000 moldes de EVA prontos para imprimir e usar em atividades criativas.",
     description:

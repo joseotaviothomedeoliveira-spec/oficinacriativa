@@ -1,11 +1,41 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { getProducts } from "@/data/products";
+import type { Product } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
-  const products = getProducts();
+  const allProducts = getProducts();
+  const { user } = useAuth();
+  const [sortedProducts, setSortedProducts] = useState<Product[]>(allProducts);
+
+  useEffect(() => {
+    if (!user) {
+      setSortedProducts(allProducts);
+      return;
+    }
+
+    const fetchPurchases = async () => {
+      const { data } = await supabase
+        .from("purchases")
+        .select("product_slug");
+
+      if (data && data.length > 0) {
+        const purchasedSlugs = new Set(data.map((p) => p.product_slug));
+        const purchased = allProducts.filter((p) => purchasedSlugs.has(p.slug));
+        const notPurchased = allProducts.filter((p) => !purchasedSlugs.has(p.slug));
+        setSortedProducts([...purchased, ...notPurchased]);
+      } else {
+        setSortedProducts(allProducts);
+      }
+    };
+
+    fetchPurchases();
+  }, [user]);
 
   return (
     <>
@@ -20,13 +50,22 @@ const Index = () => {
       <main className="container py-8">
         <Link
           to="/assistente-pedagogico"
-          className="mb-6 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 p-4 transition-colors hover:bg-primary/10"
+          className="group relative mb-6 flex items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
         >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <GraduationCap className="h-5 w-5" />
+          {/* Blur background layers */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10" />
+          <div className="absolute -top-8 -left-8 h-32 w-32 rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl" />
+          <div className="absolute inset-0 backdrop-blur-[2px]" />
+
+          <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25 transition-transform group-hover:scale-105">
+            <GraduationCap className="h-6 w-6" />
           </div>
-          <div>
-            <span className="text-sm font-semibold text-foreground">Acesse o Assistente Pedagógico</span>
+          <div className="relative flex-1">
+            <span className="flex items-center gap-2 text-sm font-bold text-foreground">
+              Acesse o Assistente Pedagógico
+              <Sparkles className="h-3.5 w-3.5 text-primary" />
+            </span>
             <p className="text-xs text-muted-foreground">Tire dúvidas e receba sugestões personalizadas</p>
           </div>
         </Link>
@@ -39,7 +78,7 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

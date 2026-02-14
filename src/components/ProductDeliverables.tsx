@@ -13,9 +13,10 @@ interface Deliverable {
 
 interface Props {
   productSlug: string;
+  onPurchaseStatusChange?: (hasPurchase: boolean) => void;
 }
 
-const ProductDeliverables = ({ productSlug }: Props) => {
+const ProductDeliverables = ({ productSlug, onPurchaseStatusChange }: Props) => {
   const { user } = useAuth();
   const [hasPurchase, setHasPurchase] = useState(false);
   const [deliverables, setDeliverables] = useState<Deliverable[]>([]);
@@ -24,6 +25,7 @@ const ProductDeliverables = ({ productSlug }: Props) => {
   useEffect(() => {
     if (!user) {
       setLoading(false);
+      onPurchaseStatusChange?.(false);
       return;
     }
 
@@ -37,6 +39,7 @@ const ProductDeliverables = ({ productSlug }: Props) => {
 
       const purchased = (purchases?.length ?? 0) > 0;
       setHasPurchase(purchased);
+      onPurchaseStatusChange?.(purchased);
 
       if (purchased) {
         const { data } = await supabase
@@ -82,7 +85,7 @@ const ProductDeliverables = ({ productSlug }: Props) => {
   if (deliverables.length === 0) {
     return (
       <div className="rounded-lg border border-primary/30 bg-primary/5 p-5 space-y-2">
-        <span className="text-sm font-semibold text-primary">✅ Produto comprado!</span>
+        <span className="text-sm font-semibold text-primary">Produto comprado!</span>
         <p className="text-sm text-muted-foreground">
           Os materiais serão disponibilizados em breve.
         </p>
@@ -93,7 +96,7 @@ const ProductDeliverables = ({ productSlug }: Props) => {
   // Has purchase + deliverables
   return (
     <div className="rounded-lg border border-primary/30 bg-primary/5 p-5 space-y-3">
-      <span className="text-sm font-semibold text-primary">✅ Seus materiais</span>
+      <span className="text-sm font-semibold text-primary">Seus materiais</span>
       <ul className="space-y-2">
         {deliverables.map((d) => (
           <li key={d.id}>

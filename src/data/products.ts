@@ -13,6 +13,7 @@ import imgSalaAula from "@/assets/product-sala-aula.png";
 import imgMoldesNovos from "@/assets/product-moldes-novos.png";
 import imgPainelPalavras from "@/assets/product-painel-palavras.png";
 import imgPalavrasEscondidas from "@/assets/product-palavras-escondidas.png";
+import imgMoldesEva from "@/assets/product-moldes-eva.png";
 
 export interface FAQ {
   q: string;
@@ -199,6 +200,33 @@ export const products: Product[] = [
     hotmartCheckoutUrl: "https://pay.hotmart.com/J102380393P?checkoutMode=2",
     wistiaMediaId: "hqc0ir1wq6",
     wistiaAspect: "0.5625",
+  },
+  {
+    id: "7",
+    slug: "5000-moldes-eva",
+    name: "+5000 Moldes de EVA",
+    priceText: "Consultar",
+    shortDescription:
+      "Mais de 5.000 moldes de EVA prontos para imprimir e usar em atividades criativas.",
+    description:
+      "A maior coleção de moldes de EVA que você vai encontrar! São mais de 5.000 modelos prontos para imprimir, recortar e criar.\n\nIdeal para professoras, artesãs e mães que querem atividades criativas sem complicação.\n\nO que está incluído:\n- Mais de 5.000 moldes organizados por tema\n- Prontos para imprimir em qualquer impressora\n- Variedade de tamanhos e estilos\n- Acesso imediato após a compra",
+    coverImageUrl: imgMoldesEva,
+    galleryImageUrls: [imgMoldesEva],
+    benefits: [
+      "Mais de 5.000 moldes de EVA",
+      "Organizados por tema",
+      "Prontos para imprimir",
+      "Variedade de tamanhos e estilos",
+      "Ideal para professoras e artesãs",
+      "Acesso imediato",
+    ],
+    faqs: [
+      { q: "Como recebo os moldes?", a: "Após a confirmação do pagamento, recebes acesso imediato por e-mail." },
+      { q: "Posso imprimir quantas vezes quiser?", a: "Sim, podes imprimir todos os moldes sem limite." },
+      { q: "Serve para que tipo de trabalho?", a: "Ideal para atividades escolares, decoração, artesanato e projetos criativos." },
+      { q: "Tem garantia?", a: "Sim, tens 7 dias de garantia incondicional." },
+    ],
+    hotmartCheckoutUrl: "https://pay.hotmart.com/N104202645J?off=nj0lu8n9&checkoutMode=2",
   },
 ];
 

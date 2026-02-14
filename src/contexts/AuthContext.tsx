@@ -23,6 +23,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+
+        // Sync user email with OneSignal for targeted notifications
+        const email = session?.user?.email;
+        if (email && typeof window !== "undefined" && (window as any).OneSignalDeferred) {
+          (window as any).OneSignalDeferred.push(async (OneSignal: any) => {
+            try {
+              await OneSignal.login(email);
+            } catch (e) {
+              console.warn("OneSignal login failed:", e);
+            }
+          });
+        }
       }
     );
 

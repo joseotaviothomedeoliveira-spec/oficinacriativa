@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
@@ -12,6 +13,7 @@ import ProductDeliverables from "@/components/ProductDeliverables";
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
+  const [hasPurchase, setHasPurchase] = useState(false);
 
   if (!product) {
     return (
@@ -53,13 +55,20 @@ const ProductPage = () => {
               <p className="mt-2 text-sm text-muted-foreground">{product.shortDescription}</p>
             </div>
 
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-price">{product.priceText}</span>
-            </div>
+            {!hasPurchase && (
+              <div className="flex items-baseline gap-2">
+                <span className="text-3xl font-bold text-price">{product.priceText}</span>
+              </div>
+            )}
 
-            <ProductDeliverables productSlug={product.slug} />
+            <ProductDeliverables
+              productSlug={product.slug}
+              onPurchaseStatusChange={setHasPurchase}
+            />
 
-            <HotmartButton checkoutUrl={product.hotmartCheckoutUrl} />
+            {!hasPurchase && (
+              <HotmartButton checkoutUrl={product.hotmartCheckoutUrl} />
+            )}
 
             <div className="rounded-lg border border-border bg-card p-5">
               <ProductBenefits benefits={product.benefits} />

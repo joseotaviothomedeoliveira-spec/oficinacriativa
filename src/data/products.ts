@@ -101,7 +101,7 @@ export const products: Product[] = [
       { q: "Posso usar em sala de aula?", a: "Sim, o material é perfeito para uso em casa ou na escola." },
       { q: "Tem garantia?", a: "Sim, 7 dias de garantia incondicional." },
     ],
-    hotmartCheckoutUrl: "https://pay.hotmart.com/L102314316U?checkoutMode=2&off=apbz9nqw",
+    hotmartCheckoutUrl: "https://pay.hotmart.com/L102314316U?checkoutMode=2&off=4qem0af6",
   },
   {
     id: "3",

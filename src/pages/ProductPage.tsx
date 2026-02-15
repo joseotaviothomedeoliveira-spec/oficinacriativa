@@ -95,9 +95,6 @@ const ProductPage = () => {
               {product.description}
             </div>
 
-            {product.drivePreviewFolderId && (
-              <DrivePreview folderId={product.drivePreviewFolderId} />
-            )}
 
             <ProductFAQ faqs={product.faqs} />
           </div>

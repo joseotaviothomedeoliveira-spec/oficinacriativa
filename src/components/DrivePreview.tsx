@@ -5,7 +5,7 @@ interface Props {
 }
 
 const DrivePreview = ({ folderId }: Props) => {
-  const embedUrl = `https://drive.google.com/embeddedfolderview?id=${folderId}#list`;
+  const embedUrl = `https://drive.google.com/embeddedfolderview?id=${folderId}#grid`;
 
   return (
     <div className="space-y-3">
@@ -25,7 +25,7 @@ const DrivePreview = ({ folderId }: Props) => {
       <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
         <iframe
           src={embedUrl}
-          className="h-[520px] w-full border-0 bg-background"
+          className="h-[700px] w-full border-0 bg-background"
           title="Pré-visualização do material"
           sandbox="allow-scripts allow-same-origin"
           loading="lazy"

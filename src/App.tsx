@@ -8,6 +8,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InstallPrompt from "@/components/InstallPrompt";
+import SupportButton from "@/components/SupportButton";
 import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
 import LoginPage from "./pages/LoginPage";
@@ -37,6 +38,7 @@ const App = () => (
               </div>
               <Footer />
               <InstallPrompt />
+              <SupportButton />
             </div>
           </BrowserRouter>
         </TooltipProvider>

@@ -9,6 +9,7 @@ import ProductFAQ from "@/components/ProductFAQ";
 import HotmartButton from "@/components/HotmartButton";
 import WistiaVideo from "@/components/WistiaVideo";
 import ProductDeliverables from "@/components/ProductDeliverables";
+import DrivePreview from "@/components/DrivePreview";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -93,6 +94,10 @@ const ProductPage = () => {
             <div className="text-sm leading-relaxed text-foreground whitespace-pre-line">
               {product.description}
             </div>
+
+            {product.drivePreviewFolderId && (
+              <DrivePreview folderId={product.drivePreviewFolderId} />
+            )}
 
             <ProductFAQ faqs={product.faqs} />
           </div>

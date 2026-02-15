@@ -37,6 +37,7 @@ export interface Product {
   wistiaMediaId2?: string;
   wistiaAspect2?: string;
   videoDividerText?: string;
+  drivePreviewFolderId?: string;
 }
 
 export const products: Product[] = [
@@ -68,6 +69,7 @@ export const products: Product[] = [
       { q: "Tem garantia?", a: "Sim, tens 7 dias de garantia incondicional." },
     ],
     hotmartCheckoutUrl: "https://pay.hotmart.com/I103359542I?checkoutMode=2",
+    drivePreviewFolderId: "1-ID5tqsYjXzOy1e--dy2PIWyirmEIcIl",
   },
   {
     id: "2",

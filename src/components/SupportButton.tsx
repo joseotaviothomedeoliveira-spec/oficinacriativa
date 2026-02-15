@@ -11,7 +11,7 @@ const SupportButton = () => {
           <p className="mb-3 text-sm font-semibold text-foreground">Precisa de ajuda?</p>
           <div className="flex flex-col gap-2">
             <a
-              href="https://wa.me/5548917540009?text=Olá%2C%20vim%20do%20site%20e%20tenho%20uma%20dúvida."
+              href="https://wa.me/5548991754009?text=Olá%2C%20vim%20do%20site%20e%20tenho%20uma%20dúvida."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-lg bg-[#25D366] px-3 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"

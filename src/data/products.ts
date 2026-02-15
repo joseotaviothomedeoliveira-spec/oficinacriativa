@@ -51,7 +51,7 @@ export const products: Product[] = [
     shortDescription:
       "Mais de 5.000 atividades prontas a imprimir para todas as situações educativas.",
     description:
-      "Descobre a solução completa para poupar horas de trabalho e ter atividades prontas para todas as situações educativas.\n\nPor apenas 37 €, tens acesso imediato a uma biblioteca com mais de 5.000 atividades, todas prontas a imprimir e usar.\n\nIdeal para professores, pais e educadores.\n\nO que vais receber:\n- Mais de 5.000 atividades organizadas\n- Recursos prontos a usar\n- Economia de tempo\n\nApós a compra, acesso imediato ao material.",
+      "Descobre a solução completa para poupar horas de trabalho e ter atividades prontas para todas as situações educativas.\n\nPor apenas 10 €, tens acesso imediato a uma biblioteca com mais de 5.000 atividades, todas prontas a imprimir e usar.\n\nIdeal para professores, pais e educadores.\n\nO que vais receber:\n- Mais de 5.000 atividades organizadas\n- Recursos prontos a usar\n- Economia de tempo\n\nApós a compra, acesso imediato ao material.",
     coverImageUrl: img5000Atividades,
     galleryImageUrls: [img5000Atividades],
     benefits: [
@@ -75,7 +75,7 @@ export const products: Product[] = [
     id: "2",
     slug: "kit-completo-alfabetizacao",
     name: "Kit Completo da Alfabetização",
-    priceText: "€7,00",
+    priceText: "€10,00",
     wistiaMediaId: "wokphhfz63",
     wistiaAspect: "0.5625",
     wistiaMediaId2: "ys9jtv5vcm",
@@ -161,7 +161,7 @@ export const products: Product[] = [
     id: "5",
     slug: "painel-das-palavras",
     name: "Painel das Palavras",
-    priceText: "€5,00",
+    priceText: "€3,90",
     wistiaMediaId: "mwp7urrfml",
     wistiaAspect: "0.5625",
     shortDescription:
@@ -190,7 +190,7 @@ export const products: Product[] = [
     id: "6",
     slug: "palavras-escondidas",
     name: "Palavras Escondidas",
-    priceText: "€5,00",
+    priceText: "€3,90",
     shortDescription:
       "Atividade divertida para as crianças descobrirem palavras dentro de letras e sílabas.",
     description:

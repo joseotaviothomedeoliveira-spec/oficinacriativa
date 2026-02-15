@@ -34,6 +34,9 @@ export interface Product {
   hotmartCheckoutUrl: string;
   wistiaMediaId?: string;
   wistiaAspect?: string;
+  wistiaMediaId2?: string;
+  wistiaAspect2?: string;
+  videoDividerText?: string;
 }
 
 export const products: Product[] = [
@@ -71,19 +74,24 @@ export const products: Product[] = [
     slug: "kit-completo-alfabetizacao",
     name: "Kit Completo da Alfabetização",
     priceText: "€7,00",
+    wistiaMediaId: "wokphhfz63",
+    wistiaAspect: "0.5625",
+    wistiaMediaId2: "ys9jtv5vcm",
+    wistiaAspect2: "0.5625",
+    videoDividerText: "Veja como as Atividades Funcionam:",
     shortDescription:
       "Material completo para ensinar leitura e escrita de forma prática e divertida.",
     description:
-      "Material completo para ensinar leitura e escrita de forma prática e divertida.\n\nInclui:\n- Reconhecimento de letras e sílabas\n- Leitura fluente\n- Coordenação motora\n- Exercícios interativos\n\nIdeal para pais e educadores.",
+      "O Kit Completo da Alfabetização foi desenvolvido para professoras que desejam tornar o processo de leitura mais leve, prático e envolvente para as crianças.\n\nSão atividades pedagógicas visuais e manipulativas pensadas para ajudar no reconhecimento de sílabas, formação de palavras e desenvolvimento da leitura de forma lúdica e eficiente.\n\nTudo já está pronto para imprimir e aplicar em sala ou em casa, sem que você precise perder horas criando material.\n\n✨ O que você vai encontrar no kit\n\nVocê recebe um conjunto completo de atividades que trabalham a alfabetização na prática:\n\n✔ Amarelinha da leitura — que une movimento e leitura\n✔ Palavra mágica de três sílabas — para formação de palavras\n✔ Leitura com as mãos — para associação silábica visual\n✔ Palavras escondidas — atividade interativa de lupa\n✔ Painel das palavras — com famílias silábicas completas\n\nCada atividade foi pensada para manter a criança engajada enquanto aprende.\n\n🎯 Para quem é este material\n\n• Professoras da educação infantil\n• Professoras do primeiro ano\n• Reforço escolar\n• Atendimento educacional\n• Pais que alfabetizam em casa\n\n🚀 Resultado esperado\n\nCom o uso contínuo das atividades, as crianças desenvolvem maior reconhecimento das sílabas, melhor formação de palavras e mais confiança na leitura.\n\n📥 Acesso imediato\n\nApós a confirmação da compra, você recebe acesso imediato ao material completo para baixar, imprimir e começar a usar hoje mesmo.",
     coverImageUrl: imgKitAlfabetizacao,
     galleryImageUrls: [imgKitAlfabetizacao],
     benefits: [
-      "Reconhecimento de letras e sílabas",
-      "Exercícios de leitura fluente",
-      "Desenvolvimento da coordenação motora",
-      "Exercícios interativos incluídos",
-      "Ideal para pais e educadores",
-      "Pronto a imprimir",
+      "Material pronto para imprimir",
+      "Visual colorido que prende a atenção",
+      "Atividades manipulativas e lúdicas",
+      "Facilita o planejamento das aulas",
+      "Pode ser usado o ano inteiro",
+      "Ajuda a acelerar o processo de alfabetização",
     ],
     faqs: [
       { q: "Para que idade é indicado?", a: "Ideal para crianças em fase de alfabetização, dos 4 aos 7 anos." },

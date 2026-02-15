@@ -82,6 +82,14 @@ const ProductPage = () => {
               <WistiaVideo mediaId={product.wistiaMediaId} aspect={product.wistiaAspect || "0.5625"} />
             )}
 
+            {product.videoDividerText && (
+              <h3 className="text-lg font-semibold text-foreground">{product.videoDividerText}</h3>
+            )}
+
+            {product.wistiaMediaId2 && (
+              <WistiaVideo mediaId={product.wistiaMediaId2} aspect={product.wistiaAspect2 || "0.5625"} />
+            )}
+
             <div className="text-sm leading-relaxed text-foreground whitespace-pre-line">
               {product.description}
             </div>

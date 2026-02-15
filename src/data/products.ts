@@ -160,6 +160,8 @@ export const products: Product[] = [
     slug: "painel-das-palavras",
     name: "Painel das Palavras",
     priceText: "€5,00",
+    wistiaMediaId: "mwp7urrfml",
+    wistiaAspect: "0.5625",
     shortDescription:
       "Material educativo completo para ajudar crianças a aprenderem a ler com facilidade.",
     description:

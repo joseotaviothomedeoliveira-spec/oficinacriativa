@@ -4,14 +4,16 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigate } from "react-router-dom";
 import { getProducts } from "@/data/products";
-import { Send, UserPlus, Trash2, Loader2 } from "lucide-react";
+import { Send, UserPlus, Trash2, Loader2, BarChart3 } from "lucide-react";
 import { toast } from "sonner";
+import AnalyticsPanel from "@/components/admin/AnalyticsPanel";
 
 const products = getProducts();
 
 const AdminPage = () => {
   const { user, loading: authLoading } = useAuth();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  const [activeTab, setActiveTab] = useState<"manage" | "analytics">("manage");
 
   // Grant access state
   const [grantEmail, setGrantEmail] = useState("");
@@ -146,134 +148,166 @@ const AdminPage = () => {
         <title>Admin — Oficina Criativa</title>
       </Helmet>
 
-      <main className="container py-8 space-y-10 max-w-2xl">
+      <main className="container py-8 space-y-6 max-w-2xl">
         <h1 className="text-2xl font-bold text-foreground">Painel Admin</h1>
 
-        {/* Grant Access */}
-        <section className="rounded-lg border border-border bg-card p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <UserPlus className="h-5 w-5" />
-            Conceder Acesso
-          </h2>
-          <div>
-            <label className="text-sm font-medium text-foreground">Email do usuário</label>
-            <input
-              type="email"
-              value={grantEmail}
-              onChange={(e) => setGrantEmail(e.target.value)}
-              placeholder="email@exemplo.com"
-              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-foreground">Produtos</label>
-            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {products.map((p) => (
-                <label
-                  key={p.slug}
-                  className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm cursor-pointer transition-colors ${
-                    selectedSlugs.includes(p.slug)
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border text-muted-foreground hover:border-primary/50"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedSlugs.includes(p.slug)}
-                    onChange={() => toggleSlug(p.slug)}
-                    className="accent-primary"
-                  />
-                  {p.name}
-                </label>
-              ))}
-            </div>
-          </div>
+        {/* Tabs */}
+        <div className="flex gap-2 border-b border-border">
           <button
-            onClick={handleGrantAccess}
-            disabled={granting}
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
+            onClick={() => setActiveTab("manage")}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === "manage"
+                ? "border-primary text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {granting ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserPlus className="h-4 w-4" />}
-            Conceder Acesso
+            <UserPlus className="inline h-4 w-4 mr-1.5" />
+            Gestão
           </button>
-        </section>
-
-        {/* Manual Purchases */}
-        {manualPurchases.length > 0 && (
-          <section className="rounded-lg border border-border bg-card p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-foreground">Acessos Manuais</h2>
-            <ul className="space-y-2">
-              {manualPurchases.map((p) => (
-                <li key={p.id} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
-                  <div className="text-sm">
-                    <span className="font-medium text-foreground">{p.buyer_email}</span>
-                    <span className="mx-2 text-muted-foreground">→</span>
-                    <span className="text-muted-foreground">{p.product_name}</span>
-                  </div>
-                  <button
-                    onClick={() => handleRemoveAccess(p.id)}
-                    className="text-destructive hover:opacity-70 transition-opacity"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {/* Send Notification */}
-        <section className="rounded-lg border border-border bg-card p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Send className="h-5 w-5" />
-            Enviar Notificação
-          </h2>
-          <div>
-            <label className="text-sm font-medium text-foreground">Título</label>
-            <input
-              type="text"
-              value={notifTitle}
-              onChange={(e) => setNotifTitle(e.target.value)}
-              placeholder="Título da notificação"
-              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium text-foreground">Mensagem</label>
-            <textarea
-              value={notifMessage}
-              onChange={(e) => setNotifMessage(e.target.value)}
-              placeholder="Corpo da notificação"
-              rows={3}
-              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-            />
-          </div>
           <button
-            onClick={handleSendNotification}
-            disabled={sending}
-            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
+            onClick={() => setActiveTab("analytics")}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === "analytics"
+                ? "border-primary text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-            Enviar
+            <BarChart3 className="inline h-4 w-4 mr-1.5" />
+            Analytics
           </button>
-        </section>
+        </div>
 
-        {/* Notification History */}
-        {notifications.length > 0 && (
-          <section className="rounded-lg border border-border bg-card p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-foreground">Notificações Enviadas</h2>
-            <ul className="space-y-2">
-              {notifications.map((n) => (
-                <li key={n.id} className="rounded-md border border-border px-3 py-2">
-                  <p className="text-sm font-medium text-foreground">{n.title}</p>
-                  <p className="text-xs text-muted-foreground">{n.message}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {new Date(n.sent_at).toLocaleString("pt-BR")}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </section>
+        {activeTab === "analytics" ? (
+          <AnalyticsPanel />
+        ) : (
+          <div className="space-y-10">
+            {/* Grant Access */}
+            <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+              <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <UserPlus className="h-5 w-5" />
+                Conceder Acesso
+              </h2>
+              <div>
+                <label className="text-sm font-medium text-foreground">Email do usuário</label>
+                <input
+                  type="email"
+                  value={grantEmail}
+                  onChange={(e) => setGrantEmail(e.target.value)}
+                  placeholder="email@exemplo.com"
+                  className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-foreground">Produtos</label>
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {products.map((p) => (
+                    <label
+                      key={p.slug}
+                      className={`flex items-center gap-2 rounded-md border px-3 py-2 text-sm cursor-pointer transition-colors ${
+                        selectedSlugs.includes(p.slug)
+                          ? "border-primary bg-primary/10 text-foreground"
+                          : "border-border text-muted-foreground hover:border-primary/50"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedSlugs.includes(p.slug)}
+                        onChange={() => toggleSlug(p.slug)}
+                        className="accent-primary"
+                      />
+                      {p.name}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <button
+                onClick={handleGrantAccess}
+                disabled={granting}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {granting ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserPlus className="h-4 w-4" />}
+                Conceder Acesso
+              </button>
+            </section>
+
+            {/* Manual Purchases */}
+            {manualPurchases.length > 0 && (
+              <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+                <h2 className="text-lg font-semibold text-foreground">Acessos Manuais</h2>
+                <ul className="space-y-2">
+                  {manualPurchases.map((p) => (
+                    <li key={p.id} className="flex items-center justify-between rounded-md border border-border px-3 py-2">
+                      <div className="text-sm">
+                        <span className="font-medium text-foreground">{p.buyer_email}</span>
+                        <span className="mx-2 text-muted-foreground">→</span>
+                        <span className="text-muted-foreground">{p.product_name}</span>
+                      </div>
+                      <button
+                        onClick={() => handleRemoveAccess(p.id)}
+                        className="text-destructive hover:opacity-70 transition-opacity"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Send Notification */}
+            <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+              <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <Send className="h-5 w-5" />
+                Enviar Notificação
+              </h2>
+              <div>
+                <label className="text-sm font-medium text-foreground">Título</label>
+                <input
+                  type="text"
+                  value={notifTitle}
+                  onChange={(e) => setNotifTitle(e.target.value)}
+                  placeholder="Título da notificação"
+                  className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-foreground">Mensagem</label>
+                <textarea
+                  value={notifMessage}
+                  onChange={(e) => setNotifMessage(e.target.value)}
+                  placeholder="Corpo da notificação"
+                  rows={3}
+                  className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                />
+              </div>
+              <button
+                onClick={handleSendNotification}
+                disabled={sending}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                Enviar
+              </button>
+            </section>
+
+            {/* Notification History */}
+            {notifications.length > 0 && (
+              <section className="rounded-lg border border-border bg-card p-6 space-y-4">
+                <h2 className="text-lg font-semibold text-foreground">Notificações Enviadas</h2>
+                <ul className="space-y-2">
+                  {notifications.map((n) => (
+                    <li key={n.id} className="rounded-md border border-border px-3 py-2">
+                      <p className="text-sm font-medium text-foreground">{n.title}</p>
+                      <p className="text-xs text-muted-foreground">{n.message}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {new Date(n.sent_at).toLocaleString("pt-BR")}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
         )}
       </main>
     </>

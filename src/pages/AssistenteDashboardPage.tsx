@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTrackPageView } from "@/hooks/useTrackEvent";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "next-themes";
@@ -25,6 +26,7 @@ const AssistenteDashboardPage = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  useTrackPageView("/assistente");
 
   // Access gate
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);

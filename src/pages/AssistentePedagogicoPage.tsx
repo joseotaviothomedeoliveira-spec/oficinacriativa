@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useTrackPageView, trackEvent } from "@/hooks/useTrackEvent";
 import { Helmet } from "react-helmet-async";
 import {
   Clock,
@@ -138,7 +139,7 @@ const CtaButton = ({ ready }: { ready: boolean }) => {
   return (
     <div className="mx-auto w-full max-w-md">
       <a
-        onClick={() => false}
+        onClick={() => { trackEvent("checkout_click", "/assistente-pedagogico"); return false; }}
         href={CHECKOUT_URL}
         className="hotmart-fb hotmart__button-checkout group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-b from-[hsl(150,50%,45%)] to-[hsl(155,55%,35%)] px-8 py-5 text-base font-bold tracking-wide text-white shadow-[0_8px_32px_hsl(150,50%,38%,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_hsl(150,50%,38%,0.55)] active:scale-[0.98]"
       >
@@ -155,6 +156,7 @@ const CtaButton = ({ ready }: { ready: boolean }) => {
 /* ── Page ── */
 const AssistentePedagogicoPage = () => {
   const ready = useHotmart();
+  useTrackPageView("/assistente-pedagogico");
 
   return (
     <>

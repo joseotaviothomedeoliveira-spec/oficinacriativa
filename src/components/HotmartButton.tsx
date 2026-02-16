@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/hooks/useTrackEvent";
 
 interface HotmartButtonProps {
   checkoutUrl: string;
@@ -42,7 +43,10 @@ const HotmartButton = ({ checkoutUrl }: HotmartButtonProps) => {
 
   return (
     <a
-      onClick={() => false}
+      onClick={() => {
+        trackEvent("checkout_click", window.location.pathname, { checkoutUrl });
+        return false;
+      }}
       href={checkoutUrl}
       className="hotmart-fb hotmart__button-checkout inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
     >

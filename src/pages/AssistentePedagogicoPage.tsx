@@ -301,16 +301,14 @@ const AssistentePedagogicoPage = () => {
               O que muda na sua rotina
             </h2>
 
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+            <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-3">
               {benefits.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,55%,92%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,97%)] p-5 shadow-md shadow-[hsl(215,40%,70%)]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/20"
+                  className="flex items-center gap-4 rounded-xl bg-[hsl(215,55%,50%)] px-5 py-4 transition-all duration-300 hover:bg-[hsl(215,55%,45%)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)] shadow-md shadow-[hsl(215,50%,50%)]/20 transition-transform duration-300 group-hover:scale-110">
-                    <Icon className="h-6 w-6 text-white" />
-                  </div>
-                  <span className="text-sm font-semibold text-foreground">{text}</span>
+                  <Icon className="h-6 w-6 shrink-0 text-white" />
+                  <span className="text-sm font-semibold text-white">{text}</span>
                 </div>
               ))}
             </div>

@@ -103,6 +103,7 @@ Deno.serve(async (req) => {
 
     // Map product name to slug
     const slugMap: Record<string, string> = {
+      // Canonical names
       "+5000 Atividades": "5000-atividades",
       "Kit Completo da Alfabetização": "kit-completo-alfabetizacao",
       "Kit Sala de Aula em 1 Hora": "kit-sala-de-aula-1-hora",
@@ -110,6 +111,15 @@ Deno.serve(async (req) => {
       "Painel das Palavras": "painel-das-palavras",
       "Palavras Escondidas": "palavras-escondidas",
       "+5000 Moldes de EVA": "5000-moldes-eva",
+      // Hotmart variant names
+      "5.000 Moldes de EVA": "5000-moldes-eva",
+      "5000 Moldes de EVA": "5000-moldes-eva",
+      "5.000 Atividades": "5000-atividades",
+      "Receba novos moldes adicionados todos os meses.": "moldes-novos-todos-os-meses",
+      "Comunidade de Atividades Semanais": "comunidade-de-atividades-semanais",
+      "Grupo de Professoras e de Quem Trabalha com Crianças": "grupo-de-professoras-e-de-quem-trabalha-com-crianas",
+      "Letrinha do Meu Nome": "letrinha-do-meu-nome",
+      "Assistente Pedagógico": "assistente-pedagogico",
     };
 
     const productSlug = slugMap[productName] || sanitizeSlug(productName);

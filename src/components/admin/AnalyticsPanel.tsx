@@ -39,7 +39,7 @@ const AnalyticsPanel = () => {
     const last7days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
 
-    // Active users (last 30 min) - unique sessions per page
+    // Active users (last 30 min) - unique emails per page
     const { data: recentData } = await supabase
       .from("analytics_events")
       .select("page, session_id")
@@ -47,13 +47,13 @@ const AnalyticsPanel = () => {
       .gte("created_at", last30min);
 
     if (recentData) {
-      const pageSessionMap: Record<string, Set<string>> = {};
+      const pageEmailMap: Record<string, Set<string>> = {};
       recentData.forEach((e) => {
-        if (!pageSessionMap[e.page]) pageSessionMap[e.page] = new Set();
-        if (e.session_id) pageSessionMap[e.page].add(e.session_id);
+        if (!pageEmailMap[e.page]) pageEmailMap[e.page] = new Set();
+        if (e.session_id) pageEmailMap[e.page].add(e.session_id);
       });
-      const live = Object.entries(pageSessionMap)
-        .map(([page, sessions]) => ({ page, count: sessions.size }))
+      const live = Object.entries(pageEmailMap)
+        .map(([page, emails]) => ({ page, count: emails.size }))
         .sort((a, b) => b.count - a.count);
       setLiveNow(live);
     }

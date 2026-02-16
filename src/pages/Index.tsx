@@ -49,7 +49,7 @@ const Index = () => {
 
       <main className="container py-8">
         <Link
-          to="/assistente-pedagogico"
+          to="/assistente"
           className="group relative mb-6 flex items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
         >
           {/* Blur background layers */}

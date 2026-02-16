@@ -59,8 +59,8 @@ const Index = () => {
           <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute inset-0 backdrop-blur-[2px]" />
 
-          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl shadow-lg shadow-primary/25 transition-transform group-hover:scale-105">
-            <img src={assistenteLogo} alt="Assistente Pedagógico" className="h-full w-full object-cover" />
+          <div className="relative h-12 w-12 shrink-0 transition-transform group-hover:scale-105">
+            <img src={assistenteLogo} alt="Assistente Pedagógico" className="h-full w-full object-contain" />
           </div>
           <div className="relative flex-1">
             <span className="flex items-center gap-2 text-sm font-bold text-foreground">

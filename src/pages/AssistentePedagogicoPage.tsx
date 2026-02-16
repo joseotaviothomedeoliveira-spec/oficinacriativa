@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   Clock,
   Brain,
-  Sparkles,
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
@@ -24,6 +23,14 @@ import {
   GraduationCap,
 } from "lucide-react";
 import garantiaImg from "@/assets/garantia-60-dias.png";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "wistia-player": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { "media-id"?: string; aspect?: string }, HTMLElement>;
+    }
+  }
+}
 
 const CHECKOUT_URL = "https://pay.hotmart.com/I104454333M";
 
@@ -54,6 +61,32 @@ const useHotmart = () => {
   }, []);
 
   return ready;
+};
+
+/* ── Wistia VSL ── */
+const WistiaVSL = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load Wistia player script
+    const playerScript = document.createElement("script");
+    playerScript.src = "https://fast.wistia.com/player.js";
+    playerScript.async = true;
+    document.head.appendChild(playerScript);
+
+    // Load Wistia embed script
+    const embedScript = document.createElement("script");
+    embedScript.src = "https://fast.wistia.com/embed/4s3eziy2e3.js";
+    embedScript.async = true;
+    embedScript.type = "module";
+    document.head.appendChild(embedScript);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full">
+      <wistia-player media-id="4s3eziy2e3" aspect="0.5625" />
+    </div>
+  );
 };
 
 /* ── Data ── */
@@ -134,7 +167,7 @@ const AssistentePedagogicoPage = () => {
 
       <main className="scroll-smooth">
         {/* ═══════ HERO ═══════ */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,40%,96%)] via-background to-[hsl(225,30%,94%)] pt-6 pb-12 md:pt-10 md:pb-16">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,40%,96%)] via-[hsl(215,35%,97%)] to-[hsl(225,30%,94%)] pt-6 pb-12 md:pt-10 md:pb-16">
           <div className="absolute -top-32 -left-32 h-96 w-96 animate-pulse rounded-full bg-[hsl(210,55%,85%)] opacity-50 blur-[100px]" />
           <div className="absolute -bottom-32 -right-32 h-96 w-96 animate-pulse rounded-full bg-[hsl(225,50%,85%)] opacity-50 blur-[100px]" />
           <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[hsl(200,50%,90%)] opacity-30 blur-[80px]" />
@@ -148,14 +181,8 @@ const AssistentePedagogicoPage = () => {
             </h1>
 
             <div className="mx-auto mt-8 max-w-[800px] overflow-hidden rounded-3xl border border-[hsl(215,30%,85%)] bg-white/50 p-1 shadow-xl shadow-[hsl(215,40%,70%)]/15 backdrop-blur-sm">
-              <div className="flex aspect-video items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(210,30%,95%)] to-[hsl(225,25%,93%)]">
-                {/* COLE AQUI O EMBED DA VSL */}
-                <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(215,50%,50%)]/10">
-                    <Sparkles className="h-6 w-6 text-[hsl(215,50%,50%)]" />
-                  </div>
-                  <p className="text-sm font-medium">Vídeo em breve</p>
-                </div>
+              <div className="overflow-hidden rounded-2xl">
+                <WistiaVSL />
               </div>
             </div>
 
@@ -174,7 +201,7 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ DOR ═══════ */}
-        <section className="py-12 md:py-14">
+        <section className="bg-gradient-to-b from-[hsl(215,35%,96%)] to-[hsl(220,30%,98%)] py-12 md:py-14">
           <div className="container mx-auto max-w-4xl px-4">
             <div className="mb-3 flex justify-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(215,50%,50%)]/10 px-4 py-1.5 text-xs font-semibold text-[hsl(215,55%,45%)]">
@@ -191,9 +218,9 @@ const AssistentePedagogicoPage = () => {
               {pains.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex items-start gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,50%,95%)] via-[hsl(220,45%,96%)] to-[hsl(230,40%,97%)] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-[hsl(215,40%,70%)]/15"
+                  className="group flex items-start gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,50%,95%)] via-[hsl(220,45%,96%)] to-[hsl(230,40%,97%)] p-4 shadow-md shadow-[hsl(215,40%,70%)]/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/20"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-destructive/10 text-destructive transition-colors group-hover:bg-destructive/15">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(215,50%,50%)]/10 text-[hsl(215,55%,45%)] transition-colors group-hover:bg-[hsl(215,50%,50%)]/15">
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="text-sm font-medium leading-relaxed text-foreground">{text}</p>
@@ -208,7 +235,7 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ O QUE É ═══════ */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(210,35%,95%)] via-[hsl(220,30%,96%)] to-background py-12 md:py-14">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[hsl(220,30%,98%)] via-[hsl(215,25%,97%)] to-[hsl(210,35%,95%)] py-12 md:py-14">
           <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-[hsl(215,50%,88%)] opacity-30 blur-[80px]" />
 
           <div className="container relative mx-auto max-w-3xl px-4 text-center">
@@ -235,7 +262,7 @@ const AssistentePedagogicoPage = () => {
                 {features.map(({ icon: Icon, text }, i) => (
                   <div
                     key={i}
-                    className="group flex items-center gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-r from-[hsl(210,55%,93%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,96%)] px-5 py-3.5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                    className="group flex items-center gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-r from-[hsl(210,55%,93%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,96%)] px-5 py-3.5 shadow-md shadow-[hsl(215,40%,70%)]/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/20"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)]">
                       <Icon className="h-4 w-4 text-white" />
@@ -249,7 +276,7 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ BENEFÍCIOS ═══════ */}
-        <section className="py-12 md:py-14">
+        <section className="bg-gradient-to-b from-[hsl(215,35%,96%)] to-[hsl(220,30%,98%)] py-12 md:py-14">
           <div className="container mx-auto max-w-4xl px-4 text-center">
             <h2 className="text-2xl font-bold text-foreground md:text-4xl">
               O que muda na sua rotina
@@ -259,7 +286,7 @@ const AssistentePedagogicoPage = () => {
               {benefits.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,55%,92%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,97%)] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/15"
+                  className="group flex flex-col items-center gap-3 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,55%,92%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,97%)] p-5 shadow-md shadow-[hsl(215,40%,70%)]/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/20"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)] shadow-md shadow-[hsl(215,50%,50%)]/20 transition-transform duration-300 group-hover:scale-110">
                     <Icon className="h-6 w-6 text-white" />
@@ -272,9 +299,9 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ OFERTA ═══════ */}
-        <section className="py-12 md:py-14">
+        <section className="bg-gradient-to-b from-[hsl(220,30%,98%)] to-[hsl(215,35%,96%)] py-12 md:py-14">
           <div className="container mx-auto max-w-2xl px-4">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,45%)] p-[2px]">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,45%)] p-[2px] shadow-xl shadow-[hsl(215,50%,50%)]/15">
               <div className="rounded-3xl bg-gradient-to-br from-[hsl(210,35%,97%)] to-white px-6 py-10 md:px-12">
                 <div className="text-center">
                   <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-[hsl(215,55%,50%)]/10 px-4 py-1.5 text-xs font-bold tracking-wide text-[hsl(215,55%,45%)]">
@@ -294,7 +321,7 @@ const AssistentePedagogicoPage = () => {
                   {offerBullets.map(({ icon: Icon, text }, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[hsl(210,55%,92%)] via-[hsl(220,50%,94%)] to-[hsl(230,45%,96%)] px-4 py-3"
+                      className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[hsl(210,55%,92%)] via-[hsl(220,50%,94%)] to-[hsl(230,45%,96%)] px-4 py-3 shadow-sm shadow-[hsl(215,40%,70%)]/8"
                     >
                       <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)]">
                         <Icon className="h-3.5 w-3.5 text-white" />
@@ -319,9 +346,9 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ GARANTIA ═══════ */}
-        <section className="py-12 md:py-14">
+        <section className="bg-gradient-to-b from-[hsl(215,35%,96%)] to-[hsl(220,30%,98%)] py-12 md:py-14">
           <div className="container mx-auto max-w-lg px-4">
-            <div className="rounded-3xl border-2 border-[hsl(215,40%,85%)] bg-gradient-to-br from-[hsl(210,35%,97%)] to-white p-8 text-center shadow-sm">
+            <div className="rounded-3xl border-2 border-[hsl(215,40%,85%)] bg-gradient-to-br from-[hsl(210,35%,97%)] to-white p-8 text-center shadow-lg shadow-[hsl(215,40%,70%)]/10">
               <img
                 src={garantiaImg}
                 alt="Garantia de 60 dias"

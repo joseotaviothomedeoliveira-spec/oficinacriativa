@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -23,32 +24,34 @@ const queryClient = new QueryClient();
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <div className="flex-1">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/p/:slug" element={<ProductPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/admin" element={<AdminPage />} />
-                  <Route path="/assistente-pedagogico" element={<AssistentePedagogicoPage />} />
-                  <Route path="/upsell-assistente" element={<UpsellAssistentePage />} />
-                  <Route path="/assistente" element={<AssistenteDashboardPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <div className="flex min-h-screen flex-col">
+                <Header />
+                <div className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/p/:slug" element={<ProductPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/assistente-pedagogico" element={<AssistentePedagogicoPage />} />
+                    <Route path="/upsell-assistente" element={<UpsellAssistentePage />} />
+                    <Route path="/assistente" element={<AssistenteDashboardPage />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </div>
+                <Footer />
+                <InstallPrompt />
+                <SupportButton />
               </div>
-              <Footer />
-              <InstallPrompt />
-              <SupportButton />
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   </HelmetProvider>
 );

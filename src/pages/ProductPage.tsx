@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft } from "lucide-react";
-import { getProductBySlug } from "@/data/products";
+import { ArrowLeft, Loader2 } from "lucide-react";
+import { getProductBySlugFromDB } from "@/hooks/useProducts";
+import type { Product } from "@/data/products";
 import ProductGallery from "@/components/ProductGallery";
 import ProductBenefits from "@/components/ProductBenefits";
 import ProductFAQ from "@/components/ProductFAQ";
@@ -14,13 +15,27 @@ import { useTrackPageView } from "@/hooks/useTrackEvent";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const product = getProductBySlug(slug || "");
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
   const [hasPurchase, setHasPurchase] = useState(false);
   useTrackPageView(`/p/${slug}`);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setLoading(true);
+    getProductBySlugFromDB(slug || "").then((p) => {
+      setProduct(p);
+      setLoading(false);
+    });
   }, [slug]);
+
+  if (loading) {
+    return (
+      <main className="container py-16 flex justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </main>
+    );
+  }
 
   if (!product) {
     return (
@@ -96,7 +111,6 @@ const ProductPage = () => {
             <div className="text-sm leading-relaxed text-foreground whitespace-pre-line">
               {product.description}
             </div>
-
 
             <ProductFAQ faqs={product.faqs} />
           </div>

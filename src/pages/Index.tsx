@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Sparkles, MessageCircle } from "lucide-react";
+import { Sparkles, MessageCircle, Loader2 } from "lucide-react";
 import assistenteLogo from "@/assets/assistente-logo.png";
 import { useEffect, useState } from "react";
-import { getProducts } from "@/data/products";
 import type { Product } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import ProductCard from "@/components/ProductCard";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useTrackPageView } from "@/hooks/useTrackEvent";
 
 const Index = () => {
-  const allProducts = getProducts();
+  const { products: allProducts, loading: productsLoading } = useProducts();
   const { user } = useAuth();
-  const [sortedProducts, setSortedProducts] = useState<Product[]>(allProducts);
+  const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
   useTrackPageView("/");
 
   useEffect(() => {
+    if (productsLoading || allProducts.length === 0) return;
+
     if (!user) {
       setSortedProducts(allProducts);
       return;
@@ -38,7 +40,7 @@ const Index = () => {
     };
 
     fetchPurchases();
-  }, [user]);
+  }, [user, allProducts, productsLoading]);
 
   return (
     <>
@@ -98,11 +100,17 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {sortedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {productsLoading ? (
+          <div className="flex justify-center py-12">
+            <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {sortedProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </main>
     </>
   );

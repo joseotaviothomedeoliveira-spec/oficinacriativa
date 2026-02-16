@@ -3,17 +3,17 @@ import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigate } from "react-router-dom";
-import { getProducts } from "@/data/products";
-import { Send, UserPlus, Trash2, Loader2, BarChart3 } from "lucide-react";
+import { useProducts } from "@/hooks/useProducts";
+import { Send, UserPlus, Trash2, Loader2, BarChart3, Package } from "lucide-react";
 import { toast } from "sonner";
 import AnalyticsPanel from "@/components/admin/AnalyticsPanel";
-
-const products = getProducts();
+import ProductManager from "@/components/admin/ProductManager";
 
 const AdminPage = () => {
   const { user, loading: authLoading } = useAuth();
+  const { products } = useProducts();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
-  const [activeTab, setActiveTab] = useState<"manage" | "analytics">("manage");
+  const [activeTab, setActiveTab] = useState<"manage" | "products" | "analytics">("manage");
 
   // Grant access state
   const [grantEmail, setGrantEmail] = useState("");
@@ -165,6 +165,17 @@ const AdminPage = () => {
             Gestão
           </button>
           <button
+            onClick={() => setActiveTab("products")}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === "products"
+                ? "border-primary text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Package className="inline h-4 w-4 mr-1.5" />
+            Produtos
+          </button>
+          <button
             onClick={() => setActiveTab("analytics")}
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
               activeTab === "analytics"
@@ -179,6 +190,8 @@ const AdminPage = () => {
 
         {activeTab === "analytics" ? (
           <AnalyticsPanel />
+        ) : activeTab === "products" ? (
+          <ProductManager />
         ) : (
           <div className="space-y-10">
             {/* Grant Access */}

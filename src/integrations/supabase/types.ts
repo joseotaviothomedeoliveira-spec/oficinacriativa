@@ -92,6 +92,78 @@ export type Database = {
         }
         Relationships: []
       }
+      products: {
+        Row: {
+          benefits: Json
+          cover_image_url: string
+          created_at: string
+          description: string
+          drive_preview_folder_id: string | null
+          faqs: Json
+          gallery_image_urls: Json
+          hotmart_checkout_url: string
+          id: string
+          is_active: boolean
+          name: string
+          price_text: string
+          short_description: string
+          slug: string
+          sort_order: number
+          updated_at: string
+          video_divider_text: string | null
+          wistia_aspect: string | null
+          wistia_aspect2: string | null
+          wistia_media_id: string | null
+          wistia_media_id2: string | null
+        }
+        Insert: {
+          benefits?: Json
+          cover_image_url?: string
+          created_at?: string
+          description?: string
+          drive_preview_folder_id?: string | null
+          faqs?: Json
+          gallery_image_urls?: Json
+          hotmart_checkout_url?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          price_text?: string
+          short_description?: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+          video_divider_text?: string | null
+          wistia_aspect?: string | null
+          wistia_aspect2?: string | null
+          wistia_media_id?: string | null
+          wistia_media_id2?: string | null
+        }
+        Update: {
+          benefits?: Json
+          cover_image_url?: string
+          created_at?: string
+          description?: string
+          drive_preview_folder_id?: string | null
+          faqs?: Json
+          gallery_image_urls?: Json
+          hotmart_checkout_url?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          price_text?: string
+          short_description?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+          video_divider_text?: string | null
+          wistia_aspect?: string | null
+          wistia_aspect2?: string | null
+          wistia_media_id?: string | null
+          wistia_media_id2?: string | null
+        }
+        Relationships: []
+      }
       purchases: {
         Row: {
           buyer_email: string

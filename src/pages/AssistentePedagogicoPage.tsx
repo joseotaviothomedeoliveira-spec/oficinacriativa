@@ -78,7 +78,7 @@ const WistiaVSL = () => {
 
     // Load Wistia embed script
     const embedScript = document.createElement("script");
-    embedScript.src = "https://fast.wistia.com/embed/4s3eziy2e3.js";
+    embedScript.src = "https://fast.wistia.com/embed/kqvqgzafjj.js";
     embedScript.async = true;
     embedScript.type = "module";
     document.head.appendChild(embedScript);
@@ -86,7 +86,7 @@ const WistiaVSL = () => {
 
   return (
     <div ref={containerRef} className="w-full">
-      <wistia-player media-id="4s3eziy2e3" aspect="0.5625" />
+      <wistia-player media-id="kqvqgzafjj" aspect="0.5625" />
     </div>
   );
 };

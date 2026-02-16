@@ -191,7 +191,22 @@ const AssistentePedagogicoPage = () => {
             </p>
 
             <div className="mt-6">
-              <CtaButton ready={ready} />
+              <div className="mx-auto w-full max-w-md">
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }}
+                  href="#oferta"
+                  className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-b from-[hsl(150,50%,45%)] to-[hsl(155,55%,35%)] px-8 py-5 text-base font-bold tracking-wide text-white shadow-[0_8px_32px_hsl(150,50%,38%,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_hsl(150,50%,38%,0.55)] active:scale-[0.98]"
+                >
+                  <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    QUERO ACESSO AO ASSISTENTE
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </a>
+              </div>
               <p className="mt-2 text-center text-xs text-muted-foreground">
                 Acesso imediato após a compra.
               </p>
@@ -298,12 +313,12 @@ const AssistentePedagogicoPage = () => {
         </section>
 
         {/* ═══════ OFERTA ═══════ */}
-        <section className="bg-gradient-to-b from-[hsl(220,30%,98%)] to-[hsl(215,35%,96%)] py-12 md:py-14">
+        <section id="oferta" className="bg-gradient-to-b from-[hsl(220,30%,98%)] to-[hsl(215,35%,96%)] py-12 md:py-14">
           <div className="container mx-auto max-w-2xl px-4">
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,45%)] p-[2px] shadow-xl shadow-[hsl(215,50%,50%)]/15">
               <div className="rounded-3xl bg-gradient-to-br from-[hsl(210,35%,97%)] to-white px-6 py-10 md:px-12">
                 <div className="text-center">
-                  <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-4 h-20 w-auto object-contain md:h-24" />
+                  <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-1 h-28 w-auto object-contain md:h-36" />
 
                   <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                     Tudo isso está incluído no seu acesso
@@ -327,12 +342,12 @@ const AssistentePedagogicoPage = () => {
                   ))}
                 </div>
 
-                <div className="mt-10 rounded-2xl bg-gradient-to-br from-[hsl(210,50%,95%)] to-[hsl(225,40%,97%)] p-6 text-center shadow-inner">
+                <div className="mt-10 rounded-2xl bg-gradient-to-br from-[hsl(150,40%,95%)] to-[hsl(155,35%,97%)] p-6 text-center shadow-inner">
                   <p className="text-sm font-medium text-muted-foreground">Tudo isso por apenas</p>
-                  <p className="mt-1 bg-gradient-to-r from-[hsl(210,70%,45%)] to-[hsl(230,65%,50%)] bg-clip-text text-6xl font-black text-transparent md:text-7xl">
+                  <p className="mt-1 bg-gradient-to-r from-[hsl(150,55%,38%)] to-[hsl(160,50%,32%)] bg-clip-text text-6xl font-black text-transparent md:text-7xl">
                     10€
                   </p>
-                  <p className="mt-1 text-sm font-semibold text-[hsl(215,55%,45%)]">Pagamento único · Acesso vitalício</p>
+                  <p className="mt-1 text-sm font-semibold text-[hsl(150,45%,35%)]">Pagamento único · Acesso vitalício</p>
                 </div>
 
                 <div className="mt-6 text-center">

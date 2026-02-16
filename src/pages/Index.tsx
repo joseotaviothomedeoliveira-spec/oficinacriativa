@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { GraduationCap, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import assistenteLogo from "@/assets/assistente-logo.png";
 import { useEffect, useState } from "react";
 import { getProducts } from "@/data/products";
 import type { Product } from "@/data/products";
@@ -58,8 +59,8 @@ const Index = () => {
           <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute inset-0 backdrop-blur-[2px]" />
 
-          <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/25 transition-transform group-hover:scale-105">
-            <GraduationCap className="h-6 w-6" />
+          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl shadow-lg shadow-primary/25 transition-transform group-hover:scale-105">
+            <img src={assistenteLogo} alt="Assistente Pedagógico" className="h-full w-full object-cover" />
           </div>
           <div className="relative flex-1">
             <span className="flex items-center gap-2 text-sm font-bold text-foreground">

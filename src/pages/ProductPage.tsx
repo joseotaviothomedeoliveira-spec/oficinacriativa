@@ -10,11 +10,13 @@ import HotmartButton from "@/components/HotmartButton";
 import WistiaVideo from "@/components/WistiaVideo";
 import ProductDeliverables from "@/components/ProductDeliverables";
 import DrivePreview from "@/components/DrivePreview";
+import { useTrackPageView } from "@/hooks/useTrackEvent";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
   const [hasPurchase, setHasPurchase] = useState(false);
+  useTrackPageView(`/p/${slug}`);
 
   useEffect(() => {
     window.scrollTo(0, 0);

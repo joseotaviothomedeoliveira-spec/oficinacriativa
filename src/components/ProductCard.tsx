@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Product } from "@/data/products";
+import { trackEvent } from "@/hooks/useTrackEvent";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Link
       to={`/p/${product.slug}`}
+      onClick={() => trackEvent("button_click", "/", { product: product.slug })}
       className="group block overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-lg animate-fade-in"
     >
       <div className="aspect-[16/10] overflow-hidden bg-muted/30">

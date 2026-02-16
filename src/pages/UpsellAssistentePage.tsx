@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTrackPageView } from "@/hooks/useTrackEvent";
 import { Helmet } from "react-helmet-async";
 import {
   Clock,
@@ -127,6 +128,7 @@ const offerBullets = [
 
 /* ── Page ── */
 const UpsellAssistentePage = () => {
+  useTrackPageView("/upsell-assistente");
   return (
     <>
       <Helmet>

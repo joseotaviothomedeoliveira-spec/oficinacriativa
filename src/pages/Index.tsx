@@ -8,11 +8,13 @@ import type { Product } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { useTrackPageView } from "@/hooks/useTrackEvent";
 
 const Index = () => {
   const allProducts = getProducts();
   const { user } = useAuth();
   const [sortedProducts, setSortedProducts] = useState<Product[]>(allProducts);
+  useTrackPageView("/");
 
   useEffect(() => {
     if (!user) {

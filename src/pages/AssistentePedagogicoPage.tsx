@@ -174,18 +174,15 @@ const AssistentePedagogicoPage = () => {
           <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[hsl(200,50%,90%)] opacity-30 blur-[80px]" />
 
            <div className="container relative mx-auto max-w-3xl px-4 text-center">
-            <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-4 h-16 w-auto object-contain" />
-            <h1 className="mx-auto max-w-2xl text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-2xl text-2xl font-extrabold leading-[1.15] tracking-tight text-foreground md:text-3xl lg:text-4xl">
               Pare de perder horas a planear aulas do zero.{" "}
               <span className="bg-gradient-to-r from-[hsl(210,70%,50%)] to-[hsl(240,55%,55%)] bg-clip-text text-transparent">
                 Deixe o Assistente fazer isso por si.
               </span>
             </h1>
 
-            <div className="mx-auto mt-8 max-w-[800px] overflow-hidden rounded-3xl border border-[hsl(215,30%,85%)] bg-white/50 p-1 shadow-xl shadow-[hsl(215,40%,70%)]/15 backdrop-blur-sm">
-              <div className="overflow-hidden rounded-2xl">
-                <WistiaVSL />
-              </div>
+            <div className="mx-auto mt-6 max-w-[800px] overflow-hidden rounded-2xl">
+              <WistiaVSL />
             </div>
 
             <p className="mx-auto mt-4 max-w-lg text-sm text-muted-foreground">
@@ -206,7 +203,7 @@ const AssistentePedagogicoPage = () => {
         <section className="bg-gradient-to-b from-[hsl(215,35%,96%)] to-[hsl(220,30%,98%)] py-12 md:py-14">
           <div className="container mx-auto max-w-4xl px-4">
             <div className="mb-3 flex justify-center">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(215,50%,50%)]/10 px-4 py-1.5 text-xs font-semibold text-[hsl(215,55%,45%)]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-destructive/10 px-4 py-1.5 text-xs font-semibold text-destructive">
                 <AlertTriangle className="h-3.5 w-3.5" />
                 Você se identifica?
               </span>
@@ -222,7 +219,7 @@ const AssistentePedagogicoPage = () => {
                   key={i}
                   className="group flex items-start gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,50%,95%)] via-[hsl(220,45%,96%)] to-[hsl(230,40%,97%)] p-4 shadow-md shadow-[hsl(215,40%,70%)]/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/20"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(215,50%,50%)]/10 text-[hsl(215,55%,45%)] transition-colors group-hover:bg-[hsl(215,50%,50%)]/15">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-destructive/10 text-destructive transition-colors group-hover:bg-destructive/15">
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="text-sm font-medium leading-relaxed text-foreground">{text}</p>

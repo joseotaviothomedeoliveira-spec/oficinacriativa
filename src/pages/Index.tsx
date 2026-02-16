@@ -51,21 +51,20 @@ const Index = () => {
       <main className="container py-8">
         <Link
           to="/assistente"
-          className="group relative mb-6 flex items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+          className="group relative mb-6 flex items-center gap-4 overflow-hidden rounded-2xl border border-[hsl(217,91%,60%)]/30 p-5 transition-all hover:border-[hsl(217,91%,60%)]/50 hover:shadow-lg hover:shadow-[hsl(217,91%,60%)]/10"
         >
-          {/* Blur background layers */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10" />
-          <div className="absolute -top-8 -left-8 h-32 w-32 rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(217,91%,60%)]/10 via-[hsl(217,91%,60%)]/5 to-[hsl(217,91%,70%)]/10" />
+          <div className="absolute -top-8 -left-8 h-32 w-32 rounded-full bg-[hsl(217,91%,60%)]/20 blur-3xl" />
+          <div className="absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-[hsl(217,91%,70%)]/20 blur-3xl" />
           <div className="absolute inset-0 backdrop-blur-[2px]" />
 
-          <div className="relative h-12 w-12 shrink-0 transition-transform group-hover:scale-105">
+          <div className="relative h-14 w-14 shrink-0 transition-transform group-hover:scale-105">
             <img src={assistenteLogo} alt="Assistente Pedagógico" className="h-full w-full object-contain" />
           </div>
           <div className="relative flex-1">
             <span className="flex items-center gap-2 text-sm font-bold text-foreground">
               Acesse o Assistente Pedagógico
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
+              <Sparkles className="h-3.5 w-3.5 text-[hsl(217,91%,60%)]" />
             </span>
             <p className="text-xs text-muted-foreground">Tire dúvidas e receba sugestões personalizadas</p>
           </div>

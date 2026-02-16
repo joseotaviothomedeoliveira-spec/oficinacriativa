@@ -7,8 +7,6 @@ import {
   Clock,
   Moon,
   Sun,
-  Lock,
-  ArrowRight,
   Sparkles,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -66,7 +64,7 @@ const AssistenteDashboardPage = () => {
   useEffect(() => {
     if (authLoading) return;
     if (!user) {
-      navigate("/login", { replace: true });
+      navigate("/assistente-pedagogico", { replace: true });
       return;
     }
     const check = async () => {
@@ -75,7 +73,12 @@ const AssistenteDashboardPage = () => {
         .select("id")
         .eq("product_slug", "assistente-pedagogico")
         .limit(1);
-      setHasAccess((data?.length ?? 0) > 0);
+      const access = (data?.length ?? 0) > 0;
+      if (!access) {
+        navigate("/assistente-pedagogico", { replace: true });
+        return;
+      }
+      setHasAccess(true);
     };
     check();
   }, [user, authLoading, navigate]);
@@ -151,36 +154,6 @@ const AssistenteDashboardPage = () => {
     );
   }
 
-  /* ── No access ── */
-  if (!hasAccess) {
-    return (
-      <>
-        <Helmet>
-          <title>Acesso restrito — Assistente Pedagógico</title>
-        </Helmet>
-        <main className="flex min-h-[60vh] items-center justify-center px-4">
-          <div className="max-w-sm text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[hsl(220,14%,96%)]">
-              <Lock className="h-7 w-7 text-[hsl(220,9%,46%)]" />
-            </div>
-            <h1 className="text-xl font-bold text-[hsl(222,47%,11%)]">
-              Acesso restrito
-            </h1>
-            <p className="mt-2 text-sm text-[hsl(220,9%,46%)]">
-              Você ainda não tem acesso ao Assistente Pedagógico.
-            </p>
-            <button
-              onClick={() => navigate("/assistente-pedagogico")}
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[hsl(217,91%,60%)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[hsl(217,91%,50%)]"
-            >
-              Conhecer o Assistente
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        </main>
-      </>
-    );
-  }
 
   /* ── Dashboard ── */
   return (

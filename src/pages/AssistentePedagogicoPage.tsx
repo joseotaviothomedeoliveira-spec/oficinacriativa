@@ -195,7 +195,12 @@ const AssistentePedagogicoPage = () => {
                 <a
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    const el = document.getElementById("oferta");
+                    if (el) {
+                      const rect = el.getBoundingClientRect();
+                      const scrollTop = window.pageYOffset + rect.top - 40;
+                      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+                    }
                   }}
                   href="#oferta"
                   className="group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-b from-[hsl(150,50%,45%)] to-[hsl(155,55%,35%)] px-8 py-5 text-base font-bold tracking-wide text-white shadow-[0_8px_32px_hsl(150,50%,38%,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_hsl(150,50%,38%,0.55)] active:scale-[0.98]"
@@ -318,7 +323,7 @@ const AssistentePedagogicoPage = () => {
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,45%)] p-[2px] shadow-xl shadow-[hsl(215,50%,50%)]/15">
               <div className="rounded-3xl bg-gradient-to-br from-[hsl(210,35%,97%)] to-white px-6 py-10 md:px-12">
                 <div className="text-center">
-                  <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-1 h-28 w-auto object-contain md:h-36" />
+                  <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto -mb-2 h-44 w-auto object-contain md:h-56" />
 
                   <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                     Tudo isso está incluído no seu acesso
@@ -363,22 +368,23 @@ const AssistentePedagogicoPage = () => {
 
         {/* ═══════ GARANTIA ═══════ */}
         <section className="bg-gradient-to-b from-[hsl(215,35%,96%)] to-[hsl(220,30%,98%)] py-12 md:py-14">
-          <div className="container mx-auto max-w-lg px-4">
-            <div className="rounded-3xl border-2 border-[hsl(215,40%,85%)] bg-gradient-to-br from-[hsl(210,35%,97%)] to-white p-8 text-center shadow-lg shadow-[hsl(215,40%,70%)]/10">
+          <div className="container mx-auto max-w-2xl px-4 text-center">
+            <div className="relative mx-auto mb-6 w-full max-w-xs">
+              <div className="absolute inset-0 animate-pulse rounded-full bg-[hsl(210,60%,55%)] opacity-30 blur-[40px]" />
               <img
                 src={garantiaImg}
                 alt="Garantia de 60 dias"
-                className="mx-auto mb-4 h-32 w-32 object-contain"
+                className="relative mx-auto w-full animate-[float_4s_ease-in-out_infinite] object-contain drop-shadow-[0_0_25px_hsl(210,60%,55%,0.4)]"
               />
-
-              <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-                Risco zero para si
-              </h2>
-              <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
-                Você tem até 60 dias de garantia incondicional. Se dentro desse prazo sentir que o Assistente não
-                ajuda na sua rotina, basta pedir reembolso. Simples assim, sem perguntas.
-              </p>
             </div>
+
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+              Risco zero para si
+            </h2>
+            <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
+              Você tem até 60 dias de garantia incondicional. Se dentro desse prazo sentir que o Assistente não
+              ajuda na sua rotina, basta pedir reembolso. Simples assim, sem perguntas.
+            </p>
           </div>
         </section>
 

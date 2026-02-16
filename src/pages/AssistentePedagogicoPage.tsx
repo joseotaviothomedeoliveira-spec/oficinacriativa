@@ -105,7 +105,7 @@ const CtaButton = ({ ready }: { ready: boolean }) => {
       <a
         onClick={() => false}
         href={CHECKOUT_URL}
-        className="hotmart-fb hotmart__button-checkout group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[hsl(210,80%,50%)] to-[hsl(230,75%,55%)] px-8 py-5 text-base font-bold tracking-wide text-white shadow-[0_8px_32px_hsl(215,70%,50%,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_hsl(215,70%,50%,0.55)] active:scale-[0.98]"
+        className="hotmart-fb hotmart__button-checkout group relative inline-flex w-full items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-[hsl(150,55%,40%)] to-[hsl(160,50%,35%)] px-8 py-5 text-base font-bold tracking-wide text-white shadow-[0_8px_32px_hsl(150,50%,38%,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_hsl(150,50%,38%,0.55)] active:scale-[0.98]"
       >
         <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
         <span className="relative z-10 flex items-center gap-2">
@@ -190,7 +190,7 @@ const AssistentePedagogicoPage = () => {
               {pains.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex items-start gap-4 rounded-2xl border border-destructive/15 bg-gradient-to-br from-destructive/5 to-transparent p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-destructive/10"
+                  className="group flex items-start gap-4 rounded-2xl border border-destructive/15 bg-gradient-to-br from-[hsl(210,50%,95%)] via-[hsl(220,45%,96%)] to-[hsl(230,40%,97%)] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-[hsl(215,40%,70%)]/15"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-destructive/10 text-destructive transition-colors group-hover:bg-destructive/15">
                     <Icon className="h-5 w-5" />
@@ -234,7 +234,7 @@ const AssistentePedagogicoPage = () => {
                 {features.map(({ icon: Icon, text }, i) => (
                   <div
                     key={i}
-                    className="group flex items-center gap-4 rounded-2xl border border-[hsl(215,40%,85%)] bg-gradient-to-r from-[hsl(210,50%,96%)] to-[hsl(225,45%,97%)] px-5 py-3.5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                    className="group flex items-center gap-4 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-r from-[hsl(210,55%,93%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,96%)] px-5 py-3.5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)]">
                       <Icon className="h-4 w-4 text-white" />
@@ -258,7 +258,7 @@ const AssistentePedagogicoPage = () => {
               {benefits.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-[hsl(215,40%,85%)] bg-gradient-to-br from-[hsl(210,50%,96%)] to-[hsl(225,45%,98%)] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/10"
+                  className="group flex flex-col items-center gap-3 rounded-2xl border border-[hsl(215,35%,82%)] bg-gradient-to-br from-[hsl(210,55%,92%)] via-[hsl(220,50%,95%)] to-[hsl(230,45%,97%)] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[hsl(215,40%,70%)]/15"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)] shadow-md shadow-[hsl(215,50%,50%)]/20 transition-transform duration-300 group-hover:scale-110">
                     <Icon className="h-6 w-6 text-white" />
@@ -293,7 +293,7 @@ const AssistentePedagogicoPage = () => {
                   {offerBullets.map(({ icon: Icon, text }, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[hsl(210,50%,96%)] to-[hsl(225,40%,98%)] px-4 py-3"
+                      className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[hsl(210,55%,92%)] via-[hsl(220,50%,94%)] to-[hsl(230,45%,96%)] px-4 py-3"
                     >
                       <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,55%)]">
                         <Icon className="h-3.5 w-3.5 text-white" />

@@ -118,11 +118,11 @@ const offerBullets = [
   { icon: Brain, text: "Assistente com Inteligência Artificial treinado para educação" },
   { icon: FileText, text: "Planos de aula gerados em segundos, adaptados à sua turma" },
   { icon: GraduationCap, text: "Atividades, sequências didáticas e avaliações completas" },
-  { icon: Infinity, text: "Acesso ilimitado — use quantas vezes quiser, sem limite" },
+  { icon: Infinity, text: "Acesso ilimitado, use quantas vezes quiser, sem limite" },
   { icon: Zap, text: "Atualizações constantes com novas funcionalidades" },
   { icon: Star, text: "Economize horas por semana no planeamento" },
   { icon: Gift, text: "Suporte dedicado para tirar todas as suas dúvidas" },
-  { icon: ShieldCheck, text: "Garantia total — se não gostar, devolvemos o seu dinheiro" },
+  { icon: ShieldCheck, text: "Garantia total: se não gostar, devolvemos o seu dinheiro" },
 ];
 
 /* ── CTA Button ── */
@@ -303,10 +303,7 @@ const AssistentePedagogicoPage = () => {
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[hsl(210,65%,50%)] to-[hsl(230,60%,45%)] p-[2px] shadow-xl shadow-[hsl(215,50%,50%)]/15">
               <div className="rounded-3xl bg-gradient-to-br from-[hsl(210,35%,97%)] to-white px-6 py-10 md:px-12">
                 <div className="text-center">
-                  <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-[hsl(215,55%,50%)]/10 px-4 py-1.5 text-xs font-bold tracking-wide text-[hsl(215,55%,45%)]">
-                    <Zap className="h-3.5 w-3.5" />
-                    OFERTA ESPECIAL
-                  </span>
+                  <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-4 h-20 w-auto object-contain md:h-24" />
 
                   <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                     Tudo isso está incluído no seu acesso
@@ -330,12 +327,15 @@ const AssistentePedagogicoPage = () => {
                   ))}
                 </div>
 
-                <div className="mt-8 text-center">
-                  <p className="mb-2 text-sm text-muted-foreground">Tudo isso por apenas</p>
-                  <p className="text-5xl font-extrabold text-foreground md:text-6xl">
-                    10<span className="text-3xl md:text-4xl">€</span>
+                <div className="mt-10 rounded-2xl bg-gradient-to-br from-[hsl(210,50%,95%)] to-[hsl(225,40%,97%)] p-6 text-center shadow-inner">
+                  <p className="text-sm font-medium text-muted-foreground">Tudo isso por apenas</p>
+                  <p className="mt-1 bg-gradient-to-r from-[hsl(210,70%,45%)] to-[hsl(230,65%,50%)] bg-clip-text text-6xl font-black text-transparent md:text-7xl">
+                    10€
                   </p>
-                  <p className="mt-1 mb-6 text-sm text-muted-foreground">Pagamento único, acesso vitalício</p>
+                  <p className="mt-1 text-sm font-semibold text-[hsl(215,55%,45%)]">Pagamento único · Acesso vitalício</p>
+                </div>
+
+                <div className="mt-6 text-center">
                   <CtaButton ready={ready} />
                   <p className="mt-2 text-xs text-muted-foreground">
                     Oferta exclusiva desta página.

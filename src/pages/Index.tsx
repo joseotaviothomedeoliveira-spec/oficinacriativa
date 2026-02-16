@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Sparkles } from "lucide-react";
+import { Sparkles, MessageCircle } from "lucide-react";
 import assistenteLogo from "@/assets/assistente-logo.png";
 import { useEffect, useState } from "react";
 import { getProducts } from "@/data/products";
@@ -71,6 +71,25 @@ const Index = () => {
             <p className="text-xs text-muted-foreground">Tire dúvidas e receba sugestões personalizadas</p>
           </div>
         </Link>
+
+        {user && (
+          <a
+            href="https://chat.whatsapp.com/FIqC3KR2gVgCImH4hbMtDa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mb-6 flex items-center gap-4 rounded-2xl border border-[hsl(142,70%,45%)]/30 bg-[hsl(142,70%,45%)]/5 p-5 transition-all hover:border-[hsl(142,70%,45%)]/50 hover:shadow-lg hover:shadow-[hsl(142,70%,45%)]/10"
+          >
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[hsl(142,70%,45%)]/15 transition-transform group-hover:scale-105">
+              <MessageCircle className="h-7 w-7 text-[hsl(142,70%,45%)]" />
+            </div>
+            <div className="flex-1">
+              <span className="flex items-center gap-2 text-sm font-bold text-foreground">
+                Grupo da Oficina Criativa no WhatsApp
+              </span>
+              <p className="text-xs text-muted-foreground">Entre no grupo e fique por dentro das novidades</p>
+            </div>
+          </a>
+        )}
 
         <div className="mb-6">
           <h2 className="text-xl font-bold text-foreground">Produtos</h2>

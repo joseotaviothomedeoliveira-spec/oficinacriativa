@@ -16,6 +16,7 @@ import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 import AssistentePedagogicoPage from "./pages/AssistentePedagogicoPage";
 import UpsellAssistentePage from "./pages/UpsellAssistentePage";
+import AssistenteDashboardPage from "./pages/AssistenteDashboardPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
                   <Route path="/admin" element={<AdminPage />} />
                   <Route path="/assistente-pedagogico" element={<AssistentePedagogicoPage />} />
                   <Route path="/upsell-assistente" element={<UpsellAssistentePage />} />
+                  <Route path="/assistente" element={<AssistenteDashboardPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

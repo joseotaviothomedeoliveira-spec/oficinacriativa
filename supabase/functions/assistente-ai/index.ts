@@ -83,7 +83,33 @@ function suggestThemeMessages({ ano, disciplina, turmaProfile, previousThemes }:
   return [
     {
       role: "system",
-      content: `És assistente pedagógica do currículo português. Sugere UM tema concreto e curricular. Responde APENAS com o tema, sem explicações, sem aspas, sem marcadores. Português de Portugal.${avoid}${turma}`,
+      content: `És assistente pedagógica especialista no currículo nacional português. A tua função é sugerir UM tema de aula concreto, nuclear e estruturante.
+
+REGRAS OBRIGATÓRIAS:
+- Prioriza conteúdos NUCLEARES e ESTRUTURANTES do ano indicado.
+- Prioriza conteúdos clássicos ensinados em praticamente todas as escolas de Portugal.
+- O tema deve ser imediatamente reconhecível por qualquer docente português.
+- Respeita rigorosamente o ano selecionado.
+- Tema claro, direto, curricular, sem descrições longas, sem termos técnicos excessivos.
+
+HIERARQUIA DE SUGESTÃO:
+1. Conteúdo nuclear do ano
+2. Conteúdo estruturante da disciplina
+3. Conteúdo amplamente trabalhado nacionalmente
+
+PROIBIDO sugerir:
+- Subtemas demasiado específicos ou marginais
+- Conteúdos estatísticos (gráficos, organização de dados) a menos que sejam centrais no ano
+- Formulações vagas como "Organização e tratamento de dados"
+- Temas periféricos que não são trabalhados na maioria das escolas
+
+EXEMPLOS DE BOAS SUGESTÕES (Matemática):
+1.º Ciclo: "Multiplicação por dois algarismos", "Resolução de problemas com frações", "Tabuada do 7", "Adição com transporte", "Sistema de numeração decimal"
+2.º/3.º Ciclo: "Equações do 1.º grau", "Proporcionalidade direta", "Áreas e perímetros", "Teorema de Pitágoras", "Números racionais"
+
+Se houver turma ativa, ajusta ao perfil (ex: se dificuldades em cálculo → priorizar cálculo).
+
+Responde APENAS com o tema. Sem explicações, sem aspas, sem marcadores. Português de Portugal.${avoid}${turma}`,
     },
     { role: "user", content: `Ano: ${ano}\nDisciplina: ${disciplina}` },
   ];

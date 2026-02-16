@@ -23,6 +23,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import garantiaImg from "@/assets/garantia-60-dias.png";
+import assistenteLogo from "@/assets/assistente-logo.png";
 
 declare global {
   namespace JSX {
@@ -172,7 +173,8 @@ const AssistentePedagogicoPage = () => {
           <div className="absolute -bottom-32 -right-32 h-96 w-96 animate-pulse rounded-full bg-[hsl(225,50%,85%)] opacity-50 blur-[100px]" />
           <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[hsl(200,50%,90%)] opacity-30 blur-[80px]" />
 
-          <div className="container relative mx-auto max-w-3xl px-4 text-center">
+           <div className="container relative mx-auto max-w-3xl px-4 text-center">
+            <img src={assistenteLogo} alt="Assistente Pedagógico" className="mx-auto mb-4 h-16 w-auto object-contain" />
             <h1 className="mx-auto max-w-2xl text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Pare de perder horas a planear aulas do zero.{" "}
               <span className="bg-gradient-to-r from-[hsl(210,70%,50%)] to-[hsl(240,55%,55%)] bg-clip-text text-transparent">
@@ -332,9 +334,11 @@ const AssistentePedagogicoPage = () => {
                 </div>
 
                 <div className="mt-8 text-center">
-                  <p className="mb-4 text-sm font-semibold text-[hsl(215,55%,45%)]">
-                    Aproveite esta condição especial disponível apenas neste momento.
+                  <p className="mb-2 text-sm text-muted-foreground">Tudo isso por apenas</p>
+                  <p className="text-5xl font-extrabold text-foreground md:text-6xl">
+                    10<span className="text-3xl md:text-4xl">€</span>
                   </p>
+                  <p className="mt-1 mb-6 text-sm text-muted-foreground">Pagamento único, acesso vitalício</p>
                   <CtaButton ready={ready} />
                   <p className="mt-2 text-xs text-muted-foreground">
                     Oferta exclusiva desta página.

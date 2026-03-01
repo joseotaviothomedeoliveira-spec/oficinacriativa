@@ -14,28 +14,30 @@ const ProductGallery = ({ images, productName }: ProductGalleryProps) => {
         <img
           src={images[selected]}
           alt={`${productName} - imagem ${selected + 1}`}
-          className="w-full aspect-[4/3] object-cover"
+          className="w-full aspect-[4/3] object-contain bg-muted/30"
         />
       </div>
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        {images.map((img, i) => (
-          <button
-            key={i}
-            onClick={() => setSelected(i)}
-            className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border-2 transition-colors ${
-              i === selected
-                ? "border-primary"
-                : "border-border hover:border-muted-foreground"
-            }`}
-          >
-            <img
-              src={img}
-              alt={`${productName} - miniatura ${i + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setSelected(i)}
+              className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border-2 transition-colors ${
+                i === selected
+                  ? "border-primary"
+                  : "border-border hover:border-muted-foreground"
+              }`}
+            >
+              <img
+                src={img}
+                alt={`${productName} - miniatura ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

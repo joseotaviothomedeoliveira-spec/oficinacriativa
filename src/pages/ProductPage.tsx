@@ -67,7 +67,7 @@ const ProductPage = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Galeria */}
           <div className="animate-fade-in">
-            <ProductGallery images={product.galleryImageUrls} productName={product.name} />
+            <ProductGallery images={product.galleryImageUrls.length > 0 ? product.galleryImageUrls : [product.coverImageUrl]} productName={product.name} />
           </div>
 
           {/* Info */}
